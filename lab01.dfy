@@ -88,7 +88,7 @@ requires m != 0
 // which means  lo <= x && x <= hi .
 predicate inRange(lo : int, x : int, hi : int)
 {
-  if lo <= x && x <= hi then true else false
+  lo <= x && x <= hi
 }
 // TODO: give a body (use a chained comparison)
 
@@ -173,14 +173,13 @@ function monthLen(m : month, isLeap : bool) : nat
 // IOW, 2024 was a leap year, 1900 wasn't, 2000 was.
 predicate isLeapYear(year : nat)
 {
-  if (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) then true
-  else false
+  (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0) 
 }
 
 // write testing lemmas for the test cases in the comment above
-lemma isLY2024() ensures isLeapYear(2024) == true {}
-lemma isLY1900() ensures isLeapYear(1900) == false {}
-lemma isLY2000() ensures isLeapYear(2000) == true {}
+lemma isLY2024() ensures isLeapYear(2024) {}
+lemma isLY1900() ensures !isLeapYear(1900) {}
+lemma isLY2000() ensures isLeapYear(2000) {}
 
 /* ------------------------------------------------------------
    PART C -- Recursion, and simple specifications
