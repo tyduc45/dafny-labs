@@ -34,10 +34,10 @@ predicate perpendicular(u: (int, int), v: (int, int))
 }
 
 function divides(m: nat, n: nat): bool
-  requires n != 0
+  requires m != 0
   decreases m, n
 {
-  if m % n == 0 then
+  if n % m == 0 then
     true
   else
     false
@@ -65,11 +65,11 @@ function next(l: light): light
 {
   match l
   case Red() =>
-    Orange
-  case Green() =>
-    Red
-  case Orange() =>
     Green
+  case Green() =>
+    Orange
+  case Orange() =>
+    Red
 }
 
 function area(s: shape): nat
@@ -114,7 +114,7 @@ lemma isLY2024()
 }
 
 lemma isLY1900()
-  ensures isLeapYear(1900) == true
+  ensures isLeapYear(1900) == false
 {
 }
 
@@ -204,9 +204,421 @@ function size<V>(t: tree<V>): nat
 {
   match t
   case Lf() =>
-    1
+    0
   case Node(k, v, l, r) =>
     1 + size(l) + size(r)
+}
+
+lemma testDistSquaredZero()
+  ensures distSquared((0, 0)) == 0
+{
+}
+
+lemma testDistSquaredPositive()
+  ensures distSquared((3, 4)) == 25
+{
+}
+
+lemma testDistSquaredNegativeComponents()
+  ensures distSquared((-3, -4)) == 25
+{
+}
+
+lemma testDistSquaredMixedComponents()
+  ensures distSquared((-5, 12)) == 169
+{
+}
+
+lemma testDotProductZeroVectors()
+  ensures dotProduct((0, 0), (0, 0)) == 0
+{
+}
+
+lemma testDotProductPositive()
+  ensures dotProduct((1, 2), (3, 4)) == 11
+{
+}
+
+lemma testDotProductNegative()
+  ensures dotProduct((-1, 2), (3, -4)) == -11
+{
+}
+
+lemma testDotProductSymmetric()
+  ensures dotProduct((2, 5), (7, 3)) == dotProduct((7, 3), (2, 5))
+{
+}
+
+lemma testPerpendicularAxes()
+  ensures perpendicular((1, 0), (0, 1))
+{
+}
+
+lemma testPerpendicularScaledAxes()
+  ensures perpendicular((5, 0), (0, -7))
+{
+}
+
+lemma testNotPerpendicular()
+  ensures !perpendicular((1, 2), (3, 4))
+{
+}
+
+lemma testPerpendicularZeroVector()
+  ensures perpendicular((0, 0), (8, 9))
+{
+}
+
+lemma testOneDividesPositive()
+  ensures divides(1, 10)
+{
+}
+
+lemma testTwoDividesEven()
+  ensures divides(2, 10)
+{
+}
+
+lemma testThreeDoesNotDivideTen()
+  ensures !divides(3, 10)
+{
+}
+
+lemma testNumberDividesItself()
+  ensures divides(7, 7)
+{
+}
+
+lemma testLargerDoesNotDivideSmaller()
+  ensures !divides(10, 3)
+{
+}
+
+lemma testInRangeMiddle()
+  ensures inRange(1, 5, 10)
+{
+}
+
+lemma testInRangeLowerBoundary()
+  ensures inRange(1, 1, 10)
+{
+}
+
+lemma testInRangeUpperBoundary()
+  ensures inRange(1, 10, 10)
+{
+}
+
+lemma testBelowRange()
+  ensures !inRange(1, 0, 10)
+{
+}
+
+lemma testAboveRange()
+  ensures !inRange(1, 11, 10)
+{
+}
+
+lemma testNegativeRange()
+  ensures inRange(-10, -5, -1)
+{
+}
+
+lemma testTaxZero()
+  ensures withTax(0) == 0
+{
+}
+
+lemma testTaxExactTen()
+  ensures withTax(100) == 110
+{
+}
+
+lemma testTaxIntegerDivision()
+  ensures withTax(99) == 108
+{
+}
+
+lemma testTaxSmallAmount()
+  ensures withTax(9) == 9
+{
+}
+
+lemma testNextRed()
+  ensures next(Red) == Green
+{
+}
+
+lemma testNextGreen()
+  ensures next(Green) == Orange
+{
+}
+
+lemma testNextOrange()
+  ensures next(Orange) == Red
+{
+}
+
+lemma testNextFullCycle(l: light)
+  ensures next(next(next(l))) == l
+  decreases l
+{
+}
+
+lemma testRectangleArea()
+  ensures area(Rectangle(3, 4)) == 12
+{
+}
+
+lemma testRectangleZeroHeight()
+  ensures area(Rectangle(0, 10)) == 0
+{
+}
+
+lemma testSquareArea()
+  ensures area(Square(5)) == 25
+{
+}
+
+lemma testSquareZero()
+  ensures area(Square(0)) == 0
+{
+}
+
+lemma testTriangleEvenArea()
+  ensures area(Triangle(6, 4)) == 12
+{
+}
+
+lemma testTriangleIntegerDivision()
+  ensures area(Triangle(3, 3)) == 4
+{
+}
+
+lemma testJanuaryLength()
+  ensures monthLen(Jan, false) == 31
+{
+}
+
+lemma testAprilLength()
+  ensures monthLen(Apr, false) == 30
+{
+}
+
+lemma testFebruaryNormalYear()
+  ensures monthLen(Feb, false) == 28
+{
+}
+
+lemma testFebruaryLeapYear()
+  ensures monthLen(Feb, true) == 29
+{
+}
+
+lemma testDecemberLength()
+  ensures monthLen(Dec, true) == 31
+{
+}
+
+lemma testLeapYear2024()
+  ensures isLeapYear(2024)
+{
+}
+
+lemma testNonLeapCentury1900()
+  ensures !isLeapYear(1900)
+{
+}
+
+lemma testLeapCentury2000()
+  ensures isLeapYear(2000)
+{
+}
+
+lemma testNonLeapYear2023()
+  ensures !isLeapYear(2023)
+{
+}
+
+lemma testLeapYear2028()
+  ensures isLeapYear(2028)
+{
+}
+
+lemma testExponentZero()
+  ensures exp(5, 0) == 1
+{
+}
+
+lemma testExponentOne()
+  ensures exp(5, 1) == 5
+{
+}
+
+lemma testExponentTwo()
+  ensures exp(5, 2) == 25
+{
+}
+
+lemma testExponentThree()
+  ensures exp(2, 3) == 8
+{
+}
+
+lemma testOneToAnyPower()
+  ensures exp(1, 20) == 1
+{
+}
+
+lemma testPositiveGradient()
+  ensures gradient((0, 0), (2, 4)) == 2
+{
+}
+
+lemma testZeroGradient()
+  ensures gradient((1, 5), (4, 5)) == 0
+{
+}
+
+lemma testNegativeGradient()
+  ensures gradient((0, 4), (2, 0)) == -2
+{
+}
+
+lemma testNegativeRun()
+  ensures gradient((4, 4), (2, 0)) == 2
+{
+}
+
+lemma testMakeZeroBigger()
+  ensures makeItBigger(0) > 0
+{
+}
+
+lemma testMakePositiveBigger()
+  ensures makeItBigger(100) > 100
+{
+}
+
+lemma testMakeNegativeBigger()
+  ensures makeItBigger(-100) > -100
+{
+}
+
+lemma testFactorialZero()
+  ensures fact(0) == 1
+{
+}
+
+lemma testFactorialOne()
+  ensures fact(1) == 1
+{
+}
+
+lemma testFactorialTwo()
+  ensures fact(2) == 2
+{
+}
+
+lemma testFactorialFour()
+  ensures fact(4) == 24
+{
+}
+
+lemma testFactorialSix()
+  ensures fact(6) == 720
+{
+}
+
+lemma testLengthNil()
+  ensures length<int>(Nil) == 0
+{
+}
+
+lemma testLengthOneElement()
+  ensures length(Cons(1, Nil)) == 1
+{
+}
+
+lemma testLengthThreeElements()
+  ensures length(Cons(1, Cons(2, Cons(3, Nil)))) == 3
+{
+}
+
+lemma testAppendTwoEmptyLists()
+  ensures append<int>(Nil, Nil) == Nil
+{
+}
+
+lemma testAppendEmptyLeft()
+  ensures append(Nil, Cons(1, Nil)) == Cons(1, Nil)
+{
+}
+
+lemma testAppendEmptyRight()
+  ensures append(Cons(1, Nil), Nil) == Cons(1, Nil)
+{
+}
+
+lemma testAppendTwoLists()
+  ensures append(Cons(1, Cons(2, Nil)), Cons(3, Cons(4, Nil))) == Cons(1, Cons(2, Cons(3, Cons(4, Nil))))
+{
+}
+
+lemma /*{:_inductionTrigger append(xs, ys)}*/ /*{:_induction xs, ys}*/ testAppendLength(xs: list<int>, ys: list<int>)
+  ensures length(append(xs, ys)) == length(xs) + length(ys)
+  decreases xs, ys
+{
+}
+
+lemma testMemberEmpty()
+  ensures !member(1, Nil)
+{
+}
+
+lemma testMemberHead()
+  ensures member(1, Cons(1, Cons(2, Nil)))
+{
+}
+
+lemma testMemberTail()
+  ensures member(2, Cons(1, Cons(2, Nil)))
+{
+}
+
+lemma testMemberAbsent()
+  ensures !member(3, Cons(1, Cons(2, Nil)))
+{
+}
+
+lemma testMemberNegativeValue()
+  ensures member(-2, Cons(1, Cons(-2, Nil)))
+{
+}
+
+lemma testEmptyTreeSize()
+  ensures size<int>(Lf) == 0
+{
+}
+
+lemma testSingleNodeSize()
+  ensures size<int>(Node(""root"", 1, Lf, Lf)) == 1
+{
+}
+
+lemma testLeftChildTreeSize()
+  ensures size<int>(Node(""root"", 1, Node(""left"", 2, Lf, Lf), Lf)) == 2
+{
+}
+
+lemma testThreeNodeTreeSize()
+  ensures size<int>(Node(""root"", 1, Node(""left"", 2, Lf, Lf), Node(""right"", 3, Lf, Lf))) == 3
+{
+}
+
+method Main(_noArgsParameter: seq<seq<char>>)
+{
+  print exp(1, 20);
 }
 
 datatype light = Red | Orange | Green
@@ -5916,7 +6328,7 @@ namespace _module {
     }
     public static bool divides(BigInteger m, BigInteger n)
     {
-      if ((Dafny.Helpers.EuclideanModulus(m, n)).Sign == 0) {
+      if ((Dafny.Helpers.EuclideanModulus(n, m)).Sign == 0) {
         return true;
       } else {
         return false;
@@ -5938,16 +6350,16 @@ namespace _module {
       _Ilight _source0 = l;
       {
         if (_source0.is_Red) {
-          return _module.light.create_Orange();
+          return _module.light.create_Green();
         }
       }
       {
         if (_source0.is_Green) {
-          return _module.light.create_Red();
+          return _module.light.create_Orange();
         }
       }
       {
-        return _module.light.create_Green();
+        return _module.light.create_Red();
       }
     }
     public static BigInteger area(_Ishape s) {
@@ -6123,7 +6535,7 @@ namespace _module {
       _Itree<__V> _source0 = t;
       {
         if (_source0.is_Lf) {
-          return BigInteger.One;
+          return BigInteger.Zero;
         }
       }
       {
@@ -6133,6 +6545,10 @@ namespace _module {
         _Itree<__V> _3_r = _source0.dtor_right;
         return ((BigInteger.One) + (__default.size<__V>(_2_l))) + (__default.size<__V>(_3_r));
       }
+    }
+    public static void _Main(Dafny.ISequence<Dafny.ISequence<Dafny.Rune>> __noArgsParameter)
+    {
+      Dafny.Helpers.Print((__default.exp(BigInteger.One, new BigInteger(20))));
     }
   }
 
@@ -6943,3 +7359,8 @@ namespace _module {
     }
   }
 } // end of namespace _module
+class __CallToMain {
+  public static void Main(string[] args) {
+    Dafny.Helpers.WithHaltHandling(() => _module.__default._Main(Dafny.Sequence<Dafny.ISequence<Dafny.Rune>>.UnicodeFromMainArguments(args)));
+  }
+}

@@ -10,3 +10,6 @@ e:\cpp_review\dafny_lab\labs\lab01.deps.json
 e:\cpp_review\dafny_lab\labs\lab01.dll
 e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\ref\lab01.dll
 e:\cpp_review\dafny_lab\labs\lab01.pdb
+e:\cpp_review\dafny_lab\labs\lab01.exe
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.genruntimeconfig.cache
+e:\cpp_review\dafny_lab\labs\lab01.runtimeconfig.json

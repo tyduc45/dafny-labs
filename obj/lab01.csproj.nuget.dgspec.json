@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\cpp_review\\dafny_lab\\labs\\lab01.csproj": {}
+    "E:\\cpp_review\\dafny_lab\\labs\\lab01.csproj": {}
   },
   "projects": {
-    "e:\\cpp_review\\dafny_lab\\labs\\lab01.csproj": {
+    "E:\\cpp_review\\dafny_lab\\labs\\lab01.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\cpp_review\\dafny_lab\\labs\\lab01.csproj",
+        "projectUniqueName": "E:\\cpp_review\\dafny_lab\\labs\\lab01.csproj",
         "projectName": "lab01",
-        "projectPath": "e:\\cpp_review\\dafny_lab\\labs\\lab01.csproj",
+        "projectPath": "E:\\cpp_review\\dafny_lab\\labs\\lab01.csproj",
         "packagesPath": "C:\\Users\\Binar\\.nuget\\packages\\",
-        "outputPath": "e:\\cpp_review\\dafny_lab\\labs\\obj\\",
+        "outputPath": "E:\\cpp_review\\dafny_lab\\labs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Binar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -69,6 +69,10 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.28, 8.0.28]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[8.0.28, 8.0.28]"
             },
             {
