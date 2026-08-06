@@ -1,0 +1,12 @@
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.GeneratedMSBuildEditorConfig.editorconfig
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.AssemblyInfoInputs.cache
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.AssemblyInfo.cs
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.csproj.CoreCompileInputs.cache
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.sourcelink.json
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.dll
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\refint\lab01.dll
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\lab01.pdb
+e:\cpp_review\dafny_lab\labs\lab01.deps.json
+e:\cpp_review\dafny_lab\labs\lab01.dll
+e:\cpp_review\dafny_lab\labs\obj\Debug\net8.0\ref\lab01.dll
+e:\cpp_review\dafny_lab\labs\lab01.pdb
